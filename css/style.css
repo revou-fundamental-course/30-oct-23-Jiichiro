@@ -84,6 +84,8 @@ button {
     display: none;
     margin: 20px 0;
     transition: 2s ease-in-out;
+    justify-content: center;
+    flex-direction: column;
 }
 
 #hasilHitung {
