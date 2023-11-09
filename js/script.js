@@ -5,7 +5,6 @@ const result = document.querySelector("#result")
 const hasilHitung = document.querySelector("#hasilHitung")
 const pesan = document.querySelector("#pesan")
 const pesan2 = document.querySelector("#pesan2")
-
 //membuat variabel dengan value kosong (null)
 let typing;
 let BMI;
@@ -29,26 +28,27 @@ function hitungBMI() {
 
     //memilih pesan sesuai hasil dari perhitungan BMI
     if (BMI < 18.5) {
-        hasilHitung.style.color = "gray";
-        clearInterval(typing);
+        hasilHitung.style.color = "gray"
+        clearInterval(typing)
         pesan.textContent = "kekurangan Berat Badan"
         typeWriter("Salam sehat! Saya berharap pesan ini menemui Anda dalam keadaan baik. Saya ingin mengingatkan Anda pentingnya memperhatikan kesehatan tubuh, termasuk asupan nutrisi yang cukup. Segera dapatkan saran dari ahli gizi untuk membantu Anda mencapai berat badan yang sehat dan membangun kekuatan tubuh dengan cara yang benar.")
     } else if (BMI >= 18.5 && BMI <= 24.9) {
-        hasilHitung.style.color = "black";
-        clearInterval(typing);
+        hasilHitung.style.color = "black"
+        clearInterval(typing)
         pesan.textContent = "Nomal (ideal)"
         typeWriter("Salam sehat! Saya senang melihat Anda menjaga keseimbangan berat badan Anda dengan baik. Teruskan pola makan dan gaya hidup sehat Anda, dan pastikan untuk tetap aktif secara fisik. Ingatlah bahwa kesehatan adalah kekayaan terbesar kita.")
     } else if (BMI >= 25 && BMI <= 29.9) {
-        hasilHitung.style.color = "yellow";
-        clearInterval(typing);
+        hasilHitung.style.color = "b3b300"
+        clearInterval(typing)
         pesan.textContent = "Kelebihan Berat Badan"
         typeWriter("Salam sehat! Saya ingin memberikan dukungan kepada Anda dalam perjalanan menuju kehidupan sehat. Pertahankan semangat dan lakukan langkah kecil menuju tujuan kesehatan Anda. Konsultasikan dengan ahli gizi atau profesional kesehatan untuk mendapatkan saran yang sesuai untuk mengelola berat badan dengan bijak.")
     } else if (BMI >= 30) {
-        hasilHitung.style.color = "red";
-        clearInterval(typing);
-        pesan.textContent = 'Kegemukan (Obesitas)';
+        hasilHitung.style.color = "red"
+        clearInterval(typing)
+        pesan.textContent = 'Kegemukan (Obesitas)'
         typeWriter("Salam sehat! Saya ingin mengatakan bahwa Anda tidak sendirian dalam perjuangan untuk mencapai keadaan tubuh yang lebih sehat. Pertama-tama, saya ingin mengatakan bahwa Anda berharga dan berarti, tidak peduli ukuran atau bentuk tubuh Anda. Namun, penting bagi kita semua untuk memprioritaskan kesehatan. Saya mendorong Anda untuk mencari bantuan dari profesional kesehatan atau ahli gizi yang dapat membimbing Anda menuju kehidupan yang lebih sehat. Ingat, setiap langkah kecil menuju kesehatan adalah pencapaian besar.")
     }
+    console.log(pesan)
 }
 
 //fungsi untuk mereset hasil operhitungan sebelumnya
@@ -74,9 +74,6 @@ function typeWriter(text) {
 
     //deklarasi variabel i dengan isi 0
     let i = 0;
-
-    //mengatur isi pesan agar kosong
-    pesan.textContent = ""; 
 
     //memulai efek mengetik
     typing = setInterval(function() {
