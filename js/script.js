@@ -5,9 +5,47 @@ const result = document.querySelector("#result")
 const hasilHitung = document.querySelector("#hasilHitung")
 const pesan = document.querySelector("#pesan")
 const pesan2 = document.querySelector("#pesan2")
+
 //membuat variabel dengan value kosong (null)
 let typing;
 let BMI;
+
+{
+    const tb = document.querySelector("#tb")
+    const bb = document.querySelector("#bb")
+    const age = document.querySelector("#age")
+    const container = document.querySelector(".container")
+    
+    //memilih style sesuai jenis kelamin
+    document.querySelector("#pria").addEventListener("change", () => {
+        
+        //menambahkan kelas
+        tb.classList.add("man-input")
+        bb.classList.add("man-input")
+        age.classList.add("man-input")
+        container.classList.add("man-shadow")
+
+        //menghapus kelas
+        tb.classList.remove("woman-input")
+        bb.classList.remove("woman-input")
+        age.classList.remove("woman-input")
+        container.classList.remove("woman-shadow")
+    })
+    document.querySelector("#wanita").addEventListener("change", () => {
+        
+        //menambahkan kelas
+        tb.classList.add("woman-input")
+        bb.classList.add("woman-input")
+        age.classList.add("woman-input")
+        container.classList.add("woman-shadow")
+
+        //menghapus kelas
+        tb.classList.remove("man-input")
+        bb.classList.remove("man-input")
+        age.classList.remove("man-input")
+        container.classList.remove("man-shadow")
+    })
+}
 
 //fungsi untuk menghitung 
 function hitungBMI() {
@@ -15,11 +53,10 @@ function hitungBMI() {
     let bb = document.getElementById("bb");
     let tb = document.getElementById("tb");
 
-    //melakukan validasi apakah unput dari user sesuai atau tidak, jika input dari user benar maka operasi perhitungan akan dilanjurkan
+    //melakukan validasi apakah unput dari user sesuai atau tidak
     hasilHitung.textContent = bb.value == "" || tb.value == "" ? "masukkan nilai yang benar" : BMI = (bb.value / Math.pow((tb.value / 100), 2)).toFixed(1)
 
     //menambah atribut untuk mengatur style elemen html
-    hitungButton.style.display = "none";
     resetButton.style.display = "block";
     result.style.display = "flex";
 
@@ -48,10 +85,9 @@ function hitungBMI() {
         pesan.textContent = 'Kegemukan (Obesitas)'
         typeWriter("Salam sehat! Saya ingin mengatakan bahwa Anda tidak sendirian dalam perjuangan untuk mencapai keadaan tubuh yang lebih sehat. Pertama-tama, saya ingin mengatakan bahwa Anda berharga dan berarti, tidak peduli ukuran atau bentuk tubuh Anda. Namun, penting bagi kita semua untuk memprioritaskan kesehatan. Saya mendorong Anda untuk mencari bantuan dari profesional kesehatan atau ahli gizi yang dapat membimbing Anda menuju kehidupan yang lebih sehat. Ingat, setiap langkah kecil menuju kesehatan adalah pencapaian besar.")
     }
-    console.log(pesan)
 }
 
-//fungsi untuk mereset hasil operhitungan sebelumnya
+//fungsi untuk mereset hasil perhitungan sebelumnya
 function reset() {
     clearInterval(typing);
 
@@ -60,7 +96,6 @@ function reset() {
     bb.value = ""
 
     //menghapus attibut style
-    hitungButton.removeAttribute("style")
     resetButton.removeAttribute("style")    
     result.removeAttribute("style")
 
@@ -75,10 +110,13 @@ function typeWriter(text) {
     //deklarasi variabel i dengan isi 0
     let i = 0;
 
-    //memulai efek mengetik
-    typing = setInterval(function() {
+    //mereset isi pesan2
+    pesan2.textContent = ""
 
-        //melakukan valiudasi apakah i lebih kecil daripada panjang teks
+    //memulai efek mengetik
+    typing = setInterval(() => {
+
+        //melakukan validasi apakah i lebih kecil daripada panjang teks
         if (i < text.length) {
             pesan2.textContent += text.charAt(i);
             i++;
